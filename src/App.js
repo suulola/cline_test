@@ -1,48 +1,41 @@
 import React, { Suspense } from "react";
-import { Provider } from "react-redux";
+import { connect } from "react-redux";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import { ErrorFallBack } from "./lib/components/ErrorFallBack/ErrorFallBack";
-import store from "./lib/store";
 import routes from "./lib/routes";
 import GuestNav from "./lib/components/Nav/GuestNav";
 import UserNav from "./lib/components/Nav/UserNav";
 import { Loader } from "./lib/components/Loaders/Loaders";
 import "./assets/output.css";
 
-function App() {
+function App({ auth }) {
+  console.log(auth);
   return (
-    <Provider store={store}>
-      <Router>
-        <ErrorBoundary FallbackComponent={ErrorFallBack}>
-          <Suspense fallback={<Loader fullscreen />}>
+    <Router>
+      <ErrorBoundary FallbackComponent={ErrorFallBack}>
+        <Suspense fallback={<Loader fullscreen />}>
+          <div className="bg-gray-50 h-screen w-100">
+            {auth && auth.isLoggedIn ? <UserNav /> : <GuestNav />}
             <Switch>
-              {routes.map((route, i) => {
-                return route.protected ? (
-                  // <PrivateRoute key={i} {...route} />
-                  <React.Fragment key={i}>
-                    <div className="bg-gray-50 h-screen w-100">
-                      <UserNav />
-                      <Route {...route} />
-                    </div>
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment key={i}>
-                    <div className="bg-gray-50 h-screen w-100">
-                      <GuestNav />
-                      <Route {...route} />
-                    </div>
-                  </React.Fragment>
-                );
-              })}
+              {routes.map((route, i) => (
+                <Route key={i} {...route} />
+              ))}
             </Switch>
-          </Suspense>
-        </ErrorBoundary>
-      </Router>
-    </Provider>
+          </div>
+        </Suspense>
+      </ErrorBoundary>
+    </Router>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    auth: null,
+  };
+};
+
+export default connect(mapStateToProps, null)(App);

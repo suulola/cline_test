@@ -1,11 +1,21 @@
-import { LOGIN_AUTHENTICATION } from '../../constants/constant'
+import { GOOGLE_LOGIN, LOGIN_AUTHENTICATION } from "../../constants/constant";
 
-const authenticationReducer = (state = {}, action) => {
+const initialState = {
+  isLoggedIn: false,
+  userData: null,
+};
+
+const authenticationReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_AUTHENTICATION:
       return {
-        status: action.status,
-        message: action.message,
+        isLoggedIn: true,
+        userData: action.payload,
+      };
+    case GOOGLE_LOGIN:
+      return {
+        isLoggedIn: true,
+        userData: action.payload,
       };
     default:
       return state;

@@ -1,8 +1,28 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { googleLogin } from "../../redux/actions/userActions";
 
-const Login = () => {
+const CLIENT_ID =
+  "1011583063301-2m3qd6anbkdni2q722310knll4tbtrsm.apps.googleusercontent.com";
+
+const Login = ({ googleLogin }) => {
+  const history = useHistory();
+
+  const responseGoogle = async (response) => {
+    const processUser = await googleLogin(response);
+    console.log(processUser, "******");
+    const { error } = processUser.payload;
+    if (error) {
+      alert(error);
+      return;
+    }
+    history.push("/dashboard");
+  };
+
   return (
     <div className="md:flex from-blue-300 bg-gradient-to-t w-full flex-1 h-5/6 mt-12 pb-5">
       <div className="w-100 md:w-1/2  flex justify-center px-3 md:justify-center">
@@ -55,17 +75,31 @@ const Login = () => {
             <div className="flex-1 mt-3 border-t-2 border-solid border-gray-200"></div>
           </div>
 
-          <div className="flex mx-12 mt-3 justify-around">
-            <img
+          <div
+            id="socialMediaLoginAuth"
+            className="flex mx-12 mt-3 justify-around"
+          >
+            {/* <img
               src="/assets/images/google.svg"
               alt="google"
               className="border px-4 py-3 w-14 rounded"
-            />
+            /> */}
             <img
               src="/assets/images/apple.svg"
               alt="apple"
               className="border px-4 py-3 w-14 rounded"
             />
+
+            <GoogleLogin
+              clientId={CLIENT_ID}
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              className="border px-4 py-3 w-14 rounded"
+              buttonText={null}
+              style={{ paddingLeft: 8 }}
+              cookiePolicy={"single_host_origin"}
+            />
+
             <img
               src="/assets/images/facebook.svg"
               alt="facebook"
@@ -78,4 +112,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect(null, { googleLogin })(Login);
