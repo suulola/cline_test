@@ -5,7 +5,7 @@ const UserNav = ({ userData }) => {
   return (
     <nav className="bg-gray-100 flex justify-between md:h-12 pb-2 items-center pt-3 flex-col md:flex-row">
       <div className="flex w-2/3 items-center mt-2 md:pr-20 w-full order-3 md:order-1">
-        <img src={userData.imageUrl || "/assets/images/google.svg"} alt="logo" className="w-5 mx-3" />{" "}
+        <img src={userData.imageUrl || "/assets/images/google.svg"} alt="logo" className="w-7 mx-3 rounded-2xl" />{" "}
         <div className="shadow flex flex-1 rounded">
           <input
             type="text"
