@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './loader.scss';
+import './loader.scss';
 
 const Buff = (props) => {
   return (

@@ -4,11 +4,13 @@ import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
-import "./assets/output.css";
-import { ErrorFallBack } from "./lib/screens/ErrorFallBack/ErrorFallBack";
+import { ErrorFallBack } from "./lib/components/ErrorFallBack/ErrorFallBack";
 import store from "./lib/store";
 import routes from "./lib/routes";
-import { Loader } from "./lib/screens/Loaders/Loaders";
+import GuestNav from "./lib/components/Nav/GuestNav";
+import UserNav from "./lib/components/Nav/UserNav";
+import { Loader } from "./lib/components/Loaders/Loaders";
+import "./assets/output.css";
 
 function App() {
   return (
@@ -20,9 +22,19 @@ function App() {
               {routes.map((route, i) => {
                 return route.protected ? (
                   // <PrivateRoute key={i} {...route} />
-                  <Route key={i} {...route} />
+                  <React.Fragment key={i}>
+                    <div className="bg-gray-50 h-screen w-100">
+                      <UserNav />
+                      <Route {...route} />
+                    </div>
+                  </React.Fragment>
                 ) : (
-                  <Route key={i} {...route} />
+                  <React.Fragment key={i}>
+                    <div className="bg-gray-50 h-screen w-100">
+                      {/* <GuestNav /> */}
+                      <Route {...route} />
+                    </div>
+                  </React.Fragment>
                 );
               })}
             </Switch>

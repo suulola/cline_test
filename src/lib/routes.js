@@ -13,16 +13,17 @@ const routes = [
     title: 'Login',
     path: '/',
     exact: true,
-    component: Login,
+    protected: false,
+    component: Home,
   },
   {
-    title: 'Transactions',
+    title: 'Home',
     path: '/dashboard',
-    component: Home,
-    exact: true,
-    protected: true,
+    component: Login,
+    // exact: true,
+    protected: false,
     bgType: 'white',
-    childModule: true,
+    // childModule: true,
   },
 ];
 
