@@ -11,14 +11,13 @@ import UserNav from "./lib/components/Nav/UserNav";
 import { Loader } from "./lib/components/Loaders/Loaders";
 import "./assets/output.css";
 
-function App({ auth }) {
-  console.log(auth);
+function App({ auth, userData }) {
   return (
     <Router>
       <ErrorBoundary FallbackComponent={ErrorFallBack}>
         <Suspense fallback={<Loader fullscreen />}>
           <div className="bg-gray-50 h-screen w-100">
-            {auth && auth.isLoggedIn ? <UserNav /> : <GuestNav />}
+            {auth && userData ? <UserNav userData={userData} /> : <GuestNav />}
             <Switch>
               {routes.map((route, i) => (
                 <Route key={i} {...route} />
@@ -32,9 +31,9 @@ function App({ auth }) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    auth: null,
+    auth: state.auth.isLoggedIn,
+    userData: state.auth.userData && state.auth.userData.profileObj ? state.auth.userData.profileObj : null,
   };
 };
 

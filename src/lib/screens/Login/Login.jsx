@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
@@ -11,16 +11,30 @@ const CLIENT_ID =
 
 const Login = ({ googleLogin }) => {
   const history = useHistory();
+  const [showError, setShowError] = useState(false);
+  const [error, setError] = useState("");
 
-  const responseGoogle = async (response) => {
+  const processGoogleOauth = async (response) => {
     const processUser = await googleLogin(response);
-    console.log(processUser, "******");
     const { error } = processUser.payload;
+    setShowError(true);
+    setTimeout(() => setShowError(false), 5000);
     if (error) {
-      alert(error);
+      console.log(error);
+      setError(error);
       return;
     }
     history.push("/dashboard");
+  };
+
+  const processFailedGoogleOauth = async (response) => {
+    console.log(response)
+    const { error } = response;
+    setShowError(true);
+    setTimeout(() => setShowError(false), 5000);
+    console.log(error);
+    setError(error);
+    return;
   };
 
   return (
@@ -42,6 +56,7 @@ const Login = ({ googleLogin }) => {
             If you don't have an account, you can{" "}
             <span className="text-blue-600 font-semibold">Register here</span>
           </small>
+          {showError && <div className="text-center text-xs text-red-500">{error}</div>}{" "}
         </motion.div>
       </div>
       <div className="pt-3 md:pt-0 w-full md:w-1/2 px-3 flex justify-center">
@@ -91,9 +106,10 @@ const Login = ({ googleLogin }) => {
             />
 
             <GoogleLogin
+              autoLoad={false}
               clientId={CLIENT_ID}
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
+              onSuccess={processGoogleOauth}
+              onFailure={processFailedGoogleOauth}
               className="border px-4 py-3 w-14 rounded"
               buttonText={null}
               style={{ paddingLeft: 8 }}
