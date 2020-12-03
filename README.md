@@ -21,7 +21,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p>Dashboard View</p>
-<img src="./public/assets/images/cline.png">
+<img src="public/assets/images/cline.jpg">
 
 
 Login with your Google Account or using the email/password field for registered users to access the Dashboard page
