@@ -1,9 +1,10 @@
 import { lazy } from 'react';
+import Home from './screens/Home/Home';
 
 
-const Home = lazy(() =>
-  import('../lib/screens/Home/Home'),
-);
+// const Home = lazy(() =>
+//   import('../lib/screens/Home/Home'),
+// );
 const Login = lazy(() =>
   import('../lib/screens/Login/Login'),
 );
@@ -14,6 +15,17 @@ const routes = [
     path: '/',
     exact: true,
     protected: false,
+    component: Login,
+  },
+  {
+    title: 'Home',
+    path: 'app',
+    // exact: true,
+    protected: false,
+    component: Home,
+  },
+  {
+    path: '/app',
     component: Home,
   },
   {

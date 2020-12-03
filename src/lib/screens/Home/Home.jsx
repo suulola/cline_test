@@ -98,7 +98,7 @@ const Home = ({ resultCount = 30 }) => {
           />
           <div className="bg-white mt-4 w-100 px-3 py-2">
             <NavIconRow icon="/assets/images/google.svg" title="YouTube" />
-            <iframe src="" frameborder="0"></iframe>
+            {/* <iframe src="" frameborder="0"></iframe> */}
           </div>
         </div>
       </section>
