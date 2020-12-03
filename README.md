@@ -1,70 +1,116 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <h3 align="center">Cline Test</h3>
+  <p align="center">Link to life Version of the <a href="https://cliine.netlify.app">app</a></p>
+  <p align="center">
+  This app puts together some of the core features of 
+    <br />
+    <a href="https://github.com/mysuulola/cline_test/blob/master/README.md"><strong>Explore the docs �</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/mysuulola/cline_test/issues">Report Bug</a>
+    �
+    <a href="https://github.com/mysuulola/cline_test/issues">Request Feature</a>
+  </p>
+</p>
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
+<!-- ABOUT THE PROJECT -->
+## About The Project
+<p>Dashboard View</p>
+<img src="public/assets/images/cline.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Login with your Google Account or using the email/password field for registered users to access the Dashboard page
 
-### `yarn test`
+### Built With
+This progam was made using the following technologies
+* [ReactJS](http://reactjs.org/)
+* [Tailwind](https://tailwindcss.com/)
+* [Framer Motion](framer.com/api/motion/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+<!-- GETTING STARTED -->
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To get a local copy up and running follow these simple example steps.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* NodeJS Environment
+You can easily install Node on your  computer by following the steps listed on the official documentation [NodeJS](http://nodejs.org/)
 
-### `yarn eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
+1. Clone the repo
+```sh
+git clone https://github.com/mysuulola/cline_test
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. The next thing is to change directory folder
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+cd cline_test
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. The next step is to install our dependencies by running the following command below
 
-## Learn More
+```sh
+yarn
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Voila!!, you did a great job but alas, we need to complete the whole step by actually starting our server by running the command below
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+npm start
+```
 
-### Code Splitting
+8. Now to view the app, we need to visit this url below and you can actually see this in your terminal when you start the server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```sh
+http://localhost:3000/
+```
 
-### Analyzing the Bundle Size
+<!-- LIVE VERSION -->
+## Live link
+[cline_test](https://cliine.netlify.app)
+<!-- ROADMAP -->
+## Roadmap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+See the [open issues](https://github.com/mysuulola/cline_test/issues) for a list of proposed features (and known issues).
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- CONTRIBUTING -->
+## Contributing
 
-### Advanced Configuration
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `yarn build` fails to minify
+<!-- LICENSE -->
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
+<!-- CONTACT -->
+## Contributor
+* Oluwaseyi Suulola: [Github](https://github.com/mysuulola)
+
+Project Link: [https://github.com/mysuulola/cline_test](https://github.com/mysuulola/cline_test)
+
+
+
+
+
+

@@ -31,7 +31,7 @@ function App() {
                 ) : (
                   <React.Fragment key={i}>
                     <div className="bg-gray-50 h-screen w-100">
-                      {/* <GuestNav /> */}
+                      <GuestNav />
                       <Route {...route} />
                     </div>
                   </React.Fragment>
