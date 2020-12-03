@@ -1,5 +1,6 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import reducers from './redux/reducers';
+import thunk from "redux-thunk";
 
 function loadFromLocalStorage() {
   try {
@@ -18,5 +19,6 @@ const persistedState = loadFromLocalStorage();
 export default createStore(
   reducers,
   persistedState,
+  applyMiddleware(thunk)
 );
 
