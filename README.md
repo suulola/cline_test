@@ -31,8 +31,7 @@ This progam was made using the following technologies
 * [ReactJS](http://reactjs.org/)
 * [Tailwind](https://tailwindcss.com/)
 * [Framer Motion](framer.com/api/motion/)
-
-
+* [FlatIcons](https://www.flaticon.com) 
 <!-- GETTING STARTED -->
 ## Getting Started
 

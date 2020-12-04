@@ -5,7 +5,7 @@ const ArticleCard = ({ logo, institution, title, description }) => {
     <>
       <div className="bg-white mb-3 w-full px-4 py-3 rounded">
         <div className="flex items-center mb-3">
-          <img src={logo} alt="logo" className="w-5 mr-2" />
+          <img src={logo} alt="logo" className="w-8 mr-2" />
           <p className="text-gray-300 text-sm">{institution}</p>
         </div>
         <h4 className="text-black text-lg mb-1">{title}</h4>

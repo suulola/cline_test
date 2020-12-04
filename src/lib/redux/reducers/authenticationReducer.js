@@ -1,25 +1,28 @@
-import { GOOGLE_LOGIN, LOGIN_AUTHENTICATION } from "../../constants/constant";
+import { GOOGLE_LOGIN, EMAIL_PASSWORD_LOGIN } from "../../constants/constant";
 
 const initialState = {
   isLoggedIn: false,
   userData: null,
 };
 
-const authenticationReducer = (state = initialState, action) => {
+const authenticationReducer = async (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_AUTHENTICATION:
+    case GOOGLE_LOGIN:
       return {
+        ...state,
         isLoggedIn: true,
         userData: action.payload,
       };
-    case GOOGLE_LOGIN:
+    case EMAIL_PASSWORD_LOGIN:
       return {
+        ...state,
         isLoggedIn: true,
-        userData: action.payload,
+        userData: { profileObj: { name: action.payload.email } },
       };
     default:
       return state;
   }
 };
+
 
 export default authenticationReducer;
