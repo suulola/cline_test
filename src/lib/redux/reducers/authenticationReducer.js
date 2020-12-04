@@ -1,4 +1,4 @@
-import { GOOGLE_LOGIN, EMAIL_PASSWORD_LOGIN } from "../../constants/constant";
+import { GOOGLE_LOGIN, LOG_OUT_USER, EMAIL_PASSWORD_LOGIN } from "../../constants/constant";
 
 const initialState = {
   isLoggedIn: false,
@@ -17,10 +17,17 @@ const authenticationReducer = (state = initialState, action) => {
         isLoggedIn: true,
         userData: { profileObj: { name: action.payload.email } },
       };
+    case LOG_OUT_USER:
+      return {
+        isLoggedIn: false,
+        userData: null,
+      };
     default:
       return state;
   }
 };
+
+
 
 
 export default authenticationReducer;

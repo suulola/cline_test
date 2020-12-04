@@ -6,16 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./lib/store";
 
-// function saveToLocalStorage(state) {
-//   try {
-//     const serializedState = JSON.stringify(state);
-//     localStorage.setItem("cline-project", serializedState);
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }
+function saveToLocalStorage(state) {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("cline-project", serializedState);
+  } catch (e) {
+    console.log(e);
+  }
+}
 
-// store.subscribe(() => saveToLocalStorage(store.getState()));
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 ReactDOM.render(
   <React.StrictMode>

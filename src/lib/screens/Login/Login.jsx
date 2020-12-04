@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router-dom";
@@ -8,8 +8,7 @@ import {
   emailPasswordLogin,
 } from "../../redux/actions/userActions";
 
-const Login = ({ googleLogin, emailPasswordLogin }) => {
-  console.log(process.env.REACT_APP_CLIENT_ID);
+const Login = ({ googleLogin, emailPasswordLogin, auth }) => {
   const history = useHistory();
   const [showError, setShowError] = useState(false);
   const [error, setError] = useState("");
@@ -30,7 +29,6 @@ const Login = ({ googleLogin, emailPasswordLogin }) => {
   };
 
   const processFailedGoogleOauth = async (response) => {
-    console.log(response);
     const { error } = response;
     setError(error);
     setShowError(true);
@@ -45,10 +43,18 @@ const Login = ({ googleLogin, emailPasswordLogin }) => {
       setTimeout(() => setShowError(false), 5000);
       return;
     }
-    const userLogin = await emailPasswordLogin({ email, password });
-    console.log(userLogin, "********");
+    await emailPasswordLogin({ email, password });
     history.push("/dashboard");
   };
+
+  useEffect(() => {
+    function checkIfAuthenticated() {
+      if (auth && auth.isLoggedIn === true) {
+        history.push("/dashboard");
+      }
+    }
+    checkIfAuthenticated()
+  }, [auth, history]);
 
   return (
     <div className="md:flex from-blue-300 bg-gradient-to-t w-full flex-1 h-5/6 mt-12 pb-5">
@@ -103,7 +109,6 @@ const Login = ({ googleLogin, emailPasswordLogin }) => {
             onClick={processEmailPasswordLogin}
             className="bg-blue-400 w-full rounded-lg text-gray-50 font-light py-2"
           >
-            {/* <Link to="/dashboard">Sign In</Link> */}
             Sign In
           </button>
 
@@ -120,7 +125,7 @@ const Login = ({ googleLogin, emailPasswordLogin }) => {
             <img
               src="/assets/images/apple.svg"
               alt="apple"
-              className="border px-4 py-3 w-14 rounded"
+              className="border px-4 py-3 w-14 rounded cursor-not-allowed" 
             />
 
             <GoogleLogin
@@ -137,8 +142,9 @@ const Login = ({ googleLogin, emailPasswordLogin }) => {
             <img
               src="/assets/images/facebook.svg"
               alt="facebook"
-              className="border px-4 py-3 w-14 rounded"
+              className="border px-4 py-3 w-14 rounded cursor-not-allowed"
             />
+            
           </div>
         </motion.div>
       </div>
@@ -146,7 +152,10 @@ const Login = ({ googleLogin, emailPasswordLogin }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
-export default connect(null, { googleLogin, emailPasswordLogin })(
+export default connect(mapStateToProps, { googleLogin, emailPasswordLogin })(
   Login
 );

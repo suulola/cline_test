@@ -1,2 +1,3 @@
 export const EMAIL_PASSWORD_LOGIN = "EMAIL_PASSWORD_LOGIN";
 export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
+export const LOG_OUT_USER = "LOG_OUT_USER";
