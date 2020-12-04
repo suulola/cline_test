@@ -5,8 +5,7 @@ const initialState = {
   userData: null,
 };
 
-const authenticationReducer = async (state = initialState, action) => {
-
+const authenticationReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOOGLE_LOGIN:
       return {
@@ -14,10 +13,6 @@ const authenticationReducer = async (state = initialState, action) => {
         userData: action.payload,
       };
     case EMAIL_PASSWORD_LOGIN:
-      console.log({
-        isLoggedIn: true,
-        userData: { profileObj: { name: action.payload.email } },
-      })
       return {
         isLoggedIn: true,
         userData: { profileObj: { name: action.payload.email } },
