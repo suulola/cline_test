@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router-dom";
@@ -8,19 +8,13 @@ import {
   emailPasswordLogin,
 } from "../../redux/actions/userActions";
 
-const Login = ({ googleLogin, emailPasswordLogin, auth }) => {
+const Login = ({ googleLogin, emailPasswordLogin }) => {
   console.log(process.env.REACT_APP_CLIENT_ID);
   const history = useHistory();
   const [showError, setShowError] = useState(false);
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    if (auth.isLoggedIn === true) {
-      history.push("/dashboard");
-    }
-  }, []);
 
   const processGoogleOauth = async (response) => {
     const processUser = await googleLogin(response);
@@ -151,10 +145,8 @@ const Login = ({ googleLogin, emailPasswordLogin, auth }) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
 
-export default connect(mapStateToProps, { googleLogin, emailPasswordLogin })(
+
+export default connect(null, { googleLogin, emailPasswordLogin })(
   Login
 );

@@ -12,13 +12,11 @@ import { Loader } from "./lib/components/Loaders/Loaders";
 import "./assets/output.css";
 
 function App({ auth, userData }) {
-  console.log(auth, userData, "12432ß");
   return (
     <Router>
       <ErrorBoundary FallbackComponent={ErrorFallBack}>
         <Suspense fallback={<Loader fullscreen />}>
           <div className="bg-gray-50 min-h-screen h-screen w-100">
-            <h1>{JSON.stringify(userData, auth)}</h1>
             {auth && userData ? <UserNav userData={userData} /> : <GuestNav />}
             <Switch>
               {routes.map((route, i) => (

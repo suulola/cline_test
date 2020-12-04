@@ -1,11 +1,10 @@
 import React from "react";
 
 const UserNav = ({ userData }) => {
-  console.log(userData, '*******')
   return (
     <nav className="bg-gray-100 flex justify-between md:h-12 pb-2 items-center pt-3 flex-col md:flex-row">
       <div className="flex w-2/3 items-center mt-2 md:pr-20 w-full order-3 md:order-1">
-        <img src={userData.imageUrl || "/assets/images/google.svg"} alt="logo" className="w-7 mx-3 rounded-2xl" />{" "}
+        <img src={userData.imageUrl || "/assets/images/wiki.svg"} alt="logo" className="w-7 mx-3 rounded-2xl" />{" "}
         <div className="shadow flex flex-1 rounded">
           <input
             type="text"
@@ -29,7 +28,7 @@ const UserNav = ({ userData }) => {
         <p className="text-gray-400 px-2 pr-4">Welcome {userData.name || "Anon"}</p>
       </div>
       <div className="flex mx-4 w-full justify-end mt-3 md:mt-2 pr-3 order-2">
-        <img src="/assets/images/google.svg" alt="blazing" className="w-3" />
+        <img src="/assets/images/new-york.svg" alt="blazing" className="w-3" />
         <div className="bg-purple-400 text-white mx-3 text-center rounded-2xl h-7 w-7">
           +
         </div>

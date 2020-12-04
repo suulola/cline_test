@@ -59,13 +59,14 @@ const Home = ({ resultCount = 30 }) => {
           pariatur quae id nobis eaque mollitia porro aliquid quis ea? Nemo."
         />
         <div className="bg-white mt-4 w-100 px-3 py-2 min-h-24">
-          <NavIconRow icon="/assets/images/google.svg" title="YouTube" />
+          <NavIconRow icon="/assets/images/youtube.svg" title="YouTube" />
           <iframe
             src="https://www.youtube.com/embed/yc_nRoMxee8"
             frameBorder="0"
             allow="autoplay; encrypted-media"
             allowFullScreen
             title="video"
+            className="w-full overflow-hidden"
           />{" "}
         </div>
       </div>
