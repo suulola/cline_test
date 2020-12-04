@@ -6,9 +6,9 @@ export const ErrorFallBack = ({
   resetErrorBoundary,
 }) => {
   return (
-    <div>
+    <div className="h-screen w-full bg-gray-100 flex justify-center flex-col px-5">
       <h1>An error occurred: {error.message}</h1>
-      <button onClick={resetErrorBoundary}>Try again</button>
+      <button className="cursor-not-allowed" onClick={resetErrorBoundary}>Try again</button>
     </div>
   );
 };

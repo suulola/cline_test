@@ -16,7 +16,7 @@ function App({ auth, userData }) {
     <Router>
       <ErrorBoundary FallbackComponent={ErrorFallBack}>
         <Suspense fallback={<Loader fullscreen />}>
-          <div className="bg-gray-50 min-h-screen h-screen w-100">
+          <div className={`${auth ? 'bg-gray-100': 'bg-gray-100' } min-h-screen h-screen w-100`}>
             {auth && userData ? <UserNav userData={userData} /> : <GuestNav />}
             <Switch>
               {routes.map((route, i) => (

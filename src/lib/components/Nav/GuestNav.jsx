@@ -39,7 +39,7 @@ const GuestNav = () => {
         </Link>
         <Link
           to="/"
-          className="px-3 py-1 bg-gray-50 text-gray-500 mx-2 border-b-2 border-blue-300"
+          className="px-3 py-1 bg-transparent text-gray-500 mx-2 border-b-2 border-blue-300"
         >
           Sign In
         </Link>
