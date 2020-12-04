@@ -14,6 +14,6 @@ const loadFromLocalStorage = () => {
   }
 }
 
-const persistedState = loadFromLocalStorage();
+const persistedState = {} //loadFromLocalStorage();
 
-export default createStore(reducers, persistedState, applyMiddleware(thunk));
+export default createStore(reducers, applyMiddleware(thunk));

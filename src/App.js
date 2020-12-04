@@ -17,7 +17,8 @@ function App({ auth, userData }) {
     <Router>
       <ErrorBoundary FallbackComponent={ErrorFallBack}>
         <Suspense fallback={<Loader fullscreen />}>
-          <div className="bg-gray-50 min-h-screen w-100">
+          <div className="bg-gray-50 min-h-screen h-screen w-100">
+            <h1>{JSON.stringify(userData, auth)}</h1>
             {auth && userData ? <UserNav userData={userData} /> : <GuestNav />}
             <Switch>
               {routes.map((route, i) => (
