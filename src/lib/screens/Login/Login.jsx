@@ -21,7 +21,6 @@ const Login = ({ googleLogin, emailPasswordLogin, auth }) => {
     setShowError(true);
     setTimeout(() => setShowError(false), 5000);
     if (error) {
-      console.log(error);
       setError(error);
       return;
     }
