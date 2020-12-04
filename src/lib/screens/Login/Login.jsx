@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { googleLogin } from "../../redux/actions/userActions";
+import {
+  googleLogin,
+  emailPasswordLogin,
+} from "../../redux/actions/userActions";
 
-const CLIENT_ID =
-  "1011583063301-2m3qd6anbkdni2q722310knll4tbtrsm.apps.googleusercontent.com";
-
-const Login = ({ googleLogin }) => {
+const Login = ({ googleLogin, emailPasswordLogin, auth }) => {
+  console.log(process.env.REACT_APP_CLIENT_ID);
   const history = useHistory();
   const [showError, setShowError] = useState(false);
   const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // useEffect(() => {
+  //   if (auth.isLoggedIn === true) {
+  //     history.push("/dashboard");
+  //   }
+  // }, []);
 
   const processGoogleOauth = async (response) => {
     const processUser = await googleLogin(response);
@@ -28,13 +36,24 @@ const Login = ({ googleLogin }) => {
   };
 
   const processFailedGoogleOauth = async (response) => {
-    console.log(response)
+    console.log(response);
     const { error } = response;
+    setError(error);
     setShowError(true);
     setTimeout(() => setShowError(false), 5000);
-    console.log(error);
-    setError(error);
     return;
+  };
+
+  const processEmailPasswordLogin = async () => {
+    if (!email || !password) {
+      setError("Required fields missing");
+      setShowError(true);
+      setTimeout(() => setShowError(false), 5000);
+      return;
+    }
+    const userLogin = await emailPasswordLogin({ email, password });
+    console.log(userLogin, "********");
+    history.push("/dashboard");
   };
 
   return (
@@ -56,7 +75,9 @@ const Login = ({ googleLogin }) => {
             If you don't have an account, you can{" "}
             <span className="text-blue-600 font-semibold">Register here</span>
           </small>
-          {showError && <div className="text-center text-xs text-red-500">{error}</div>}{" "}
+          {showError && (
+            <div className="text-center text-xs text-red-500">{error}</div>
+          )}{" "}
         </motion.div>
       </div>
       <div className="pt-3 md:pt-0 w-full md:w-1/2 px-3 flex justify-center">
@@ -67,12 +88,16 @@ const Login = ({ googleLogin }) => {
           className="pb-12 px-5 pt-10 bg-white min-h-32 rounded max-h-96"
         >
           <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="text"
             className="bg-gray-100 border-0 placeholder-gray-500 w-full rounded h-14 p-3 focus:border:0"
             placeholder="Enter email or phone number"
           />
           <input
-            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
             className="bg-gray-100 mt-3 border-0 placeholder-gray-500 w-full rounded h-14 p-3 focus:border:0"
             placeholder="Password"
           />
@@ -80,8 +105,12 @@ const Login = ({ googleLogin }) => {
             <p className="text-sm text-gray-300">Forgot Password?</p>
           </div>
 
-          <button className="bg-blue-400 w-full rounded-lg text-gray-50 font-light py-2">
-            <Link to="/dashboard">Sign In</Link>
+          <button
+            onClick={processEmailPasswordLogin}
+            className="bg-blue-400 w-full rounded-lg text-gray-50 font-light py-2"
+          >
+            {/* <Link to="/dashboard">Sign In</Link> */}
+            Sign In
           </button>
 
           <div className="flex flex-grow mx-2 mt-3">
@@ -94,11 +123,6 @@ const Login = ({ googleLogin }) => {
             id="socialMediaLoginAuth"
             className="flex mx-12 mt-3 justify-around"
           >
-            {/* <img
-              src="/assets/images/google.svg"
-              alt="google"
-              className="border px-4 py-3 w-14 rounded"
-            /> */}
             <img
               src="/assets/images/apple.svg"
               alt="apple"
@@ -107,7 +131,7 @@ const Login = ({ googleLogin }) => {
 
             <GoogleLogin
               autoLoad={false}
-              clientId={CLIENT_ID}
+              clientId={process.env.REACT_APP_CLIENT_ID}
               onSuccess={processGoogleOauth}
               onFailure={processFailedGoogleOauth}
               className="border px-4 py-3 w-14 rounded"
@@ -127,5 +151,10 @@ const Login = ({ googleLogin }) => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
-export default connect(null, { googleLogin })(Login);
+export default connect(mapStateToProps, { googleLogin, emailPasswordLogin })(
+  Login
+);

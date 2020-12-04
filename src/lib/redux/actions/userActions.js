@@ -1,4 +1,4 @@
-import { GOOGLE_LOGIN } from "../../constants/constant";
+import { GOOGLE_LOGIN, EMAIL_PASSWORD_LOGIN } from "../../constants/constant";
 
 export const googleLogin = (googleResponse) => async (dispatch) => {
   if (typeof googleResponse === "undefined") {
@@ -6,3 +6,7 @@ export const googleLogin = (googleResponse) => async (dispatch) => {
   }
   return dispatch({ type: GOOGLE_LOGIN, payload: googleResponse });
 };
+
+export const emailPasswordLogin = (data) => async(dispatch) => {
+  return dispatch({type: EMAIL_PASSWORD_LOGIN, payload: data})
+}

@@ -1,10 +1,10 @@
-import { applyMiddleware, createStore } from 'redux';
-import reducers from './redux/reducers';
+import { applyMiddleware, createStore } from "redux";
+import reducers from "./redux/reducers";
 import thunk from "redux-thunk";
 
-function loadFromLocalStorage() {
+const loadFromLocalStorage = () => {
   try {
-    const serializedState = localStorage.getItem('cline-project');
+    const serializedState = localStorage.getItem("cline-project");
     if (serializedState) {
       return JSON.parse(serializedState);
     }
@@ -14,11 +14,6 @@ function loadFromLocalStorage() {
   }
 }
 
-const persistedState = loadFromLocalStorage();
+const persistedState = {} //loadFromLocalStorage();
 
-export default createStore(
-  reducers,
-  persistedState,
-  applyMiddleware(thunk)
-);
-
+export default createStore(reducers, applyMiddleware(thunk));

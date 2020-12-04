@@ -12,11 +12,13 @@ import { Loader } from "./lib/components/Loaders/Loaders";
 import "./assets/output.css";
 
 function App({ auth, userData }) {
+  console.log(auth, userData, "12432ß");
   return (
     <Router>
       <ErrorBoundary FallbackComponent={ErrorFallBack}>
         <Suspense fallback={<Loader fullscreen />}>
-          <div className="bg-gray-50 h-screen w-100">
+          <div className="bg-gray-50 min-h-screen h-screen w-100">
+            <h1>{JSON.stringify(userData, auth)}</h1>
             {auth && userData ? <UserNav userData={userData} /> : <GuestNav />}
             <Switch>
               {routes.map((route, i) => (
@@ -33,7 +35,10 @@ function App({ auth, userData }) {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth.isLoggedIn,
-    userData: state.auth.userData && state.auth.userData.profileObj ? state.auth.userData.profileObj : null,
+    userData:
+      state.auth.userData && state.auth.userData.profileObj
+        ? state.auth.userData.profileObj
+        : null,
   };
 };
 
