@@ -33,6 +33,7 @@ function App({ auth, userData }) {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     auth: state.auth.isLoggedIn,
     userData:

@@ -64,7 +64,6 @@ const Home = ({ resultCount = 30 }) => {
             src="https://www.youtube.com/embed/yc_nRoMxee8"
             frameBorder="0"
             allow="autoplay; encrypted-media"
-            // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             title="video"
           />{" "}
