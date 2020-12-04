@@ -16,11 +16,11 @@ const Login = ({ googleLogin, emailPasswordLogin, auth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // useEffect(() => {
-  //   if (auth.isLoggedIn === true) {
-  //     history.push("/dashboard");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (auth.isLoggedIn === true) {
+      history.push("/dashboard");
+    }
+  }, []);
 
   const processGoogleOauth = async (response) => {
     const processUser = await googleLogin(response);
