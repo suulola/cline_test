@@ -16,11 +16,11 @@ const Login = ({ googleLogin, emailPasswordLogin, auth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    if (auth.isLoggedIn === true) {
-      history.push("/dashboard");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (auth.isLoggedIn === true) {
+  //     history.push("/dashboard");
+  //   }
+  // }, []);
 
   const processGoogleOauth = async (response) => {
     const processUser = await googleLogin(response);
@@ -123,11 +123,6 @@ const Login = ({ googleLogin, emailPasswordLogin, auth }) => {
             id="socialMediaLoginAuth"
             className="flex mx-12 mt-3 justify-around"
           >
-            {/* <img
-              src="/assets/images/google.svg"
-              alt="google"
-              className="border px-4 py-3 w-14 rounded"
-            /> */}
             <img
               src="/assets/images/apple.svg"
               alt="apple"
