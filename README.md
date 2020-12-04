@@ -62,13 +62,13 @@ cd cline_test
 yarn
 ```
 
-5. Voila!!, you did a great job but alas, we need to complete the whole step by actually starting our server by running the command below
+4. Voila!!, you did a great job but alas, we need to complete the whole step by actually starting our server by running the command below
 
 ```sh
 npm start
 ```
 
-8. Now to view the app, we need to visit this url below and you can actually see this in your terminal when you start the server
+5. Now to view the app, we need to visit this url below and you can actually see this in your terminal when you start the server
 
 ```sh
 http://localhost:3000/
@@ -92,7 +92,7 @@ Contributions are what make the open source community such an amazing place to b
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+5. Open a Pull Request 
 
 
 
