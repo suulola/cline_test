@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <h3 align="center">Cline Test</h3>
-  <p align="center">Link to life Version of the <a href="https://cliine.netlify.app">app</a></p>
+  <p align="center">Link to live Version of the <a href="https://cliine.netlify.app">app</a></p>
   <p align="center">
   This app puts together some of the core features of 
     <br />
